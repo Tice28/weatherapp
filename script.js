@@ -5,14 +5,14 @@ const tempTgl = document.getElementById("tempToggle");
 const cityName = document.getElementById("cityName");
 
 window.onload = () => {
-    getWeather("http://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=New York&aqi=no&days=3") ;
+    getWeather("https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=New York&aqi=no&days=3") ;
 }
 
 form.addEventListener('submit', (element) =>{
     element.preventDefault();
     if(validate()){
         clearContent();
-        getWeather(`http://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
+        getWeather(`https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
     }
     else{
         alert("Please enter a valid location");
@@ -23,7 +23,7 @@ form.addEventListener('submit', (element) =>{
 tempTgl.addEventListener("click", () => {
     if(validate()){
         clearContent();
-        getWeather(`http://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
+        getWeather(`https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
     }
 });
 

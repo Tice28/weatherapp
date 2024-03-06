@@ -16,7 +16,7 @@ body {
     overflow-x: hidden;
     display: grid;
     grid-template-rows: 1fr .5fr 5fr 1fr;
-    background-image: url("/img/wabackground.svg");
+    background-image: url("wabackground.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
