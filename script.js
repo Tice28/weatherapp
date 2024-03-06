@@ -11,7 +11,6 @@ window.onload = () => {
 form.addEventListener('submit', (element) =>{
     element.preventDefault();
     if(validate()){
-        clearContent();
         getWeather(`https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
     }
     else{
@@ -21,26 +20,25 @@ form.addEventListener('submit', (element) =>{
 });
 
 tempTgl.addEventListener("click", () => {
-    if(validate()){
         clearContent();
-        getWeather(`https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityInput.value}&aqi=no&days=3`);
-    }
+        getWeather(`https://api.weatherapi.com/v1/forecast.json?key=afc8a513ef9547378a1185517242802&q=${cityName.textContent}&aqi=no&days=3`);
 });
 
 async function getWeather(url){
     const unit = getTempUnit();
     const response = await fetch(url,{mode: "cors"});
-    response.json().then(function(response){
-        try{
-            response.forecast.forecastday.forEach((element) => {
-                changeCityName(response.location.name);
-                displayForecast(element, unit);
-            });
-        }
-        catch(e){
-            alert("Please enter a valid location")
-        }
-    });
+    if(response.status !== 400){
+        clearContent();
+        response.json().then(function(response){
+                response.forecast.forecastday.forEach((element) => {
+                    changeCityName(response.location.name);
+                    displayForecast(element, unit);
+                });
+        });
+    }
+    else{
+        alert("City not found!");
+    }
 }
 
 function displayForecast(dayForecast, tempUnit){

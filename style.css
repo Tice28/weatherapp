@@ -73,6 +73,7 @@ header > * {
     align-items: center;
     height: min-content;
     width: min-content;
+    gap: 5px;
 }
 
 .temp-type > h1 {
